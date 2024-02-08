@@ -71,13 +71,7 @@ func JWTValidate() gin.HandlerFunc {
 			ctx.Abort()
 			return
 		}
-
-		// var dataCurrentUser []string
-
-		// dataCurrentUser := []string(
-		// 	Name : dataToken["user"].Name,
-		// )
-
+		
 		var users []models.User
 		errorDb := configs.DB.Where("id = ?", dataToken["userId"]).First(&users).Error
 		if errorDb != nil {
